@@ -1,22 +1,34 @@
 import React from 'react'
+import { Outlet, ReactLocation, Route, Router } from 'react-location'
+import AppLayout from './Layouts/AppLayout'
+import Home from './pages/Home'
+import Types from './pages/Types'
+import Objects from './pages/Objects'
+import './app.css'
+
+const LOCATION = new ReactLocation({
+  // defaultLoaderMaxAge: 1000,
+  // defaultLinkPreloadMaxAge: 1000 * 3
+})
+
+type MyRoute = Route & {
+  title?: string
+}
+
+export const PAGES: MyRoute[] = [
+  { path: '/types', title: 'Types', element: <Types /> },
+  { path: '/objects', title: 'Objects', element: <Objects /> }
+]
+
+const ROUTES: Route[] = [{ path: '/', element: <Home /> }, ...PAGES]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router location={LOCATION} routes={ROUTES}>
+      <AppLayout>
+        <Outlet />
+      </AppLayout>
+    </Router>
   )
 }
 
