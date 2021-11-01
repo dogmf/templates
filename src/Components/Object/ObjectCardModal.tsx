@@ -1,26 +1,21 @@
 import { Modal, Form, message, Button, Spin } from 'antd'
 import { FC, useCallback, useEffect } from 'react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { MyAppDatabase } from '../Utils/db'
-import SpaceBlock from './SpaceBlock'
-import TypeForm from './TypeForm'
+import { CardModalProps } from '../../App.types'
+import { MyAppDatabase } from '../../Utils/db'
+import SpaceBlock from '../SpaceBlock'
+import ObjectForm from './ObjectForm'
 
-type TypeCardModalProps = {
-  id?: number
-  onCancel: () => void
-  visible: boolean
-}
-
-const TypeCardModal: FC<TypeCardModalProps> = (props) => {
+const ObjectCardModal: FC<CardModalProps> = (props) => {
   let { visible, id, onCancel } = props
 
   const queryClient = useQueryClient()
-  const { data: typeData, isLoading: loading } = useQuery(
-    ['types', id],
+  const { data: objectData, isLoading: loading } = useQuery(
+    ['objects', id],
     async () => {
       if (id) {
         const db = new MyAppDatabase()
-        return await db.types.get(id)
+        return await db.objects.get(id)
       }
     },
     { enabled: !!id }
@@ -28,22 +23,26 @@ const TypeCardModal: FC<TypeCardModalProps> = (props) => {
 
   const [form] = Form.useForm()
   useEffect(() => {
-    if (typeData) form.setFieldsValue(typeData)
+    if (objectData) form.setFieldsValue(objectData)
     else form.resetFields()
-  }, [typeData, form])
+  }, [objectData, form])
 
-  const { mutate: saveType, isLoading: saving } = useMutation(
+  const { mutate: saveObject, isLoading: saving } = useMutation(
     async () => {
       const db = new MyAppDatabase()
       await form.validateFields()
       let data = form.getFieldsValue()
-      if (id) return await db.types.update(id, data)
-      else return await db.types.add(data)
+      console.log({ id, data })
+      if (id) {
+        return await db.objects.update(id, data)
+      } else {
+        return await db.objects.add(data)
+      }
     },
     {
       onSuccess: () => {
         message.success('saved')
-        queryClient.invalidateQueries(['types'])
+        queryClient.invalidateQueries(['objects'])
         onCancel()
       },
       onError: (error: Error) => {
@@ -52,17 +51,17 @@ const TypeCardModal: FC<TypeCardModalProps> = (props) => {
     }
   )
 
-  const { mutate: deleteType, isLoading: deleting } = useMutation(
+  const { mutate: deleteObject, isLoading: deleting } = useMutation(
     async () => {
       if (id) {
         const db = new MyAppDatabase()
-        return await db.types.delete(id)
+        return await db.objects.delete(id)
       }
     },
     {
       onSuccess: () => {
         message.success('deleted')
-        queryClient.invalidateQueries(['types'])
+        queryClient.invalidateQueries(['objects'])
         onCancel()
       },
       onError: (error: Error) => {
@@ -77,15 +76,15 @@ const TypeCardModal: FC<TypeCardModalProps> = (props) => {
     Modal.confirm({
       title: 'delete object?',
       onOk: () => {
-        deleteType()
+        deleteObject()
       }
     })
-  }, [deleteType])
+  }, [deleteObject])
 
   return (
     <Modal
       visible={visible}
-      title="Type"
+      title="Object"
       footer={
         <Spin spinning={loadingState}>
           <SpaceBlock>
@@ -103,7 +102,7 @@ const TypeCardModal: FC<TypeCardModalProps> = (props) => {
               cancel
             </Button>
             <Button
-              onClick={saveType as () => void}
+              onClick={saveObject as () => void}
               type="primary"
               disabled={loadingState}
             >
@@ -113,9 +112,9 @@ const TypeCardModal: FC<TypeCardModalProps> = (props) => {
         </Spin>
       }
     >
-      <TypeForm form={form} />
+      <ObjectForm form={form} />
     </Modal>
   )
 }
 
-export default TypeCardModal
+export default ObjectCardModal

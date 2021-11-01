@@ -1,7 +1,7 @@
 import { Button, Table, TableColumnType, TablePaginationConfig } from 'antd'
 import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
-import TypeCardModal from '../Components/TypeCardModal'
+import TypeCardModal from '../Components/Type/TypeCardModal'
 import PageLayout from '../Layouts/PageLayout'
 import { MyAppDatabase, Type } from '../Utils/db'
 

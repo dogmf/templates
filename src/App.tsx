@@ -1,11 +1,11 @@
 import React from 'react'
 import { Outlet, ReactLocation, Route, Router } from 'react-location'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import AppLayout from './Layouts/AppLayout'
 import Home from './pages/Home'
 import Types from './pages/Types'
 import Objects from './pages/Objects'
-import './app.css'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import './app.scss'
 
 const queryClient = new QueryClient()
 
