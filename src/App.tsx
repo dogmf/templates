@@ -5,6 +5,9 @@ import Home from './pages/Home'
 import Types from './pages/Types'
 import Objects from './pages/Objects'
 import './app.css'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 const LOCATION = new ReactLocation({
   // defaultLoaderMaxAge: 1000,
@@ -24,11 +27,13 @@ const ROUTES: Route[] = [{ path: '/', element: <Home /> }, ...PAGES]
 
 function App() {
   return (
-    <Router location={LOCATION} routes={ROUTES}>
-      <AppLayout>
-        <Outlet />
-      </AppLayout>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router location={LOCATION} routes={ROUTES}>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </Router>
+    </QueryClientProvider>
   )
 }
 
