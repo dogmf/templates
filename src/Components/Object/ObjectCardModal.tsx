@@ -32,7 +32,6 @@ const ObjectCardModal: FC<CardModalProps> = (props) => {
       const db = new MyAppDatabase()
       await form.validateFields()
       let data = form.getFieldsValue()
-      console.log({ id, data })
       if (id) {
         return await db.objects.update(id, data)
       } else {

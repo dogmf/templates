@@ -31,7 +31,6 @@ const TypeForm: FC<TypeFormProps> = (props) => {
       >
         {(form) => {
           let example = form.getFieldValue('defaults')
-          console.log({ example })
           return (
             <Form.Item
               name="template"

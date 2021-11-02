@@ -1,5 +1,9 @@
-import { compile } from 'handlebars'
+import H, { compile } from 'handlebars'
 import { RuleObject } from 'rc-field-form/lib/interface'
+
+H.registerHelper('eq', function (value, value2) {
+  return value === value2
+})
 
 export const templateValidator = async (
   _: RuleObject,

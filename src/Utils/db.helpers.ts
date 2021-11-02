@@ -25,12 +25,12 @@ export const INITIAL_TYPES = [
         avatar:
           'https://avatars.dicebear.com/api/micah/618130330e2f00a5984b8be5.svg',
         name: 'Coleen Whitfield',
-        gender: 'female',
+        gender: 'male',
         email: 'coleenwhitfield@delphide.com'
       }
     },
     template:
-      '<li class="ant-list-item" style="padding:1em 2em">\r\n  <div class="ant-list-item-meta">\r\n    <div class="ant-list-item-meta-avatar">\r\n      <span class="ant-avatar ant-avatar-circle ant-avatar-image" style="width:80px; height:80px"\r\n        ><img src="{{data.avatar}}"\r\n      /></span>\r\n    </div>\r\n    <div>\r\n      <h4 class="ant-list-item-meta-title">\r\n        {{data.name}}\r\n      </h4>\r\n      <div class="ant-list-item-meta-description">\r\n          {{data.email}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n</li>\r\n',
+      "<li class='ant-list-item' style='padding:1em 2em'>\r\n  <div class='ant-list-item-meta'>\r\n    <div class='ant-list-item-meta-avatar'>\r\n      <span\r\n        class='ant-avatar ant-avatar-circle ant-avatar-image'\r\n        style='width:80px; height:80px'\r\n      ><img src='{{data.avatar}}' /></span>\r\n    </div>\r\n    <div>\r\n      <h4 class='ant-list-item-meta-title'>\r\n        {{data.name}}\r\n        {{#if (eq data.gender 'male')}}\r\n          ♂️\r\n        {{else}}\r\n          ♀️\r\n        {{/if}}\r\n      </h4>\r\n      <div class='ant-list-item-meta-description'>\r\n        {{data.email}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n</li>",
     id: 2
   },
   {
@@ -47,7 +47,7 @@ export const INITIAL_OBJECTS = [
   {
     type: 'dog',
     data: {
-      picture: 'https://images.dog.ceo/breeds/bluetick/n02088632_874.jpg',
+      picture: 'https://images.dog.ceo/breeds/redbone/n02090379_4918.jpg',
       age: 4,
       name: 'Golden',
       gender: 'male',
@@ -150,7 +150,7 @@ export const INITIAL_OBJECTS = [
       avatar:
         'https://avatars.dicebear.com/api/micah/618130246ede0616bbd820be.svg',
       name: 'Therese Mckinney',
-      gender: 'female',
+      gender: 'male',
       email: 'theresemckinney@delphide.com'
     }
   },
