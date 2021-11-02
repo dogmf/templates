@@ -1,23 +1,15 @@
 import { FC } from 'react'
-import { Controlled as CodeMirror } from 'react-codemirror2'
 import { DefaultInputProps } from '../../App.types'
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/mode/javascript/javascript'
-import 'codemirror/mode/jsx/jsx'
+import AceEditor, { IAceEditorProps } from 'react-ace'
 
-type CodeInputProps = DefaultInputProps<string> & {
-  options?: any
-}
+import 'ace-builds/src-noconflict/mode-json'
+import 'ace-builds/src-noconflict/mode-handlebars'
+import 'ace-builds/src-noconflict/theme-github'
+
+export type CodeInputProps = DefaultInputProps<string> & IAceEditorProps
 
 const CodeInput: FC<CodeInputProps> = (props) => {
-  let { value, onChange, ...otherProps } = props
-  return (
-    <CodeMirror
-      value={value || ''}
-      onBeforeChange={(editor, data, value) => onChange?.(value)}
-      {...otherProps}
-    />
-  )
+  return <AceEditor {...props} />
 }
 
 export default CodeInput

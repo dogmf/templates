@@ -85,6 +85,7 @@ const ObjectCardModal: FC<CardModalProps> = (props) => {
     <Modal
       visible={visible}
       title="Object"
+      onCancel={onCancel}
       footer={
         <Spin spinning={loadingState}>
           <SpaceBlock>

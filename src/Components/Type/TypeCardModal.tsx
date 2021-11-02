@@ -81,6 +81,8 @@ const TypeCardModal: FC<CardModalProps> = (props) => {
     <Modal
       visible={visible}
       title="Type"
+      width="720px"
+      onCancel={onCancel}
       footer={
         <Spin spinning={loadingState}>
           <SpaceBlock>

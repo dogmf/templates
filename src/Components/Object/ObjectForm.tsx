@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { FormInstance, Form, Input } from 'antd'
-import CodeInput from '../Inputs/CodeInput'
+import JSONInput from '../Inputs/JSONInput'
 
 type ObjectFormProps = {
   form: FormInstance
@@ -14,7 +14,7 @@ const ObjectForm: FC<ObjectFormProps> = (props) => {
         <Input />
       </Form.Item>
       <Form.Item name="data" label="data" noStyle initialValue="">
-        <CodeInput options={{ lineNumbers: true, mode: 'javascript' }} />
+        <JSONInput />
       </Form.Item>
     </Form>
   )

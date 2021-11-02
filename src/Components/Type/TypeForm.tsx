@@ -1,6 +1,8 @@
 import { FormInstance, Form, Input } from 'antd'
 import { FC } from 'react'
-import CodeInput from '../Inputs/CodeInput'
+import JSONInput from '../Inputs/JSONInput'
+import { templateValidator } from '../Template/template.helpers'
+import TemplateInput from '../Template/TemplateInput'
 
 type TypeFormProps = {
   form: FormInstance
@@ -13,13 +15,32 @@ const TypeForm: FC<TypeFormProps> = (props) => {
       <Form.Item name="name" label="Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
+      <Form.Item name="defaults" label="Defaults" rules={[{ required: true }]}>
+        <JSONInput />
+      </Form.Item>
       <Form.Item
-        name="template"
         label="Template"
-        rules={[{ required: true }]}
-        noStyle
+        shouldUpdate={(prevValue, newValue) =>
+          prevValue['defaults'] !== newValue['defaults']
+        }
       >
-        <CodeInput options={{ lineNumbers: true, mode: 'jsx' }} />
+        {(form) => {
+          let example = form.getFieldValue('defaults')
+          console.log({ example })
+          return (
+            <Form.Item
+              name="template"
+              rules={[
+                {
+                  required: true,
+                  validator: templateValidator
+                }
+              ]}
+            >
+              <TemplateInput width="600px" example={example} />
+            </Form.Item>
+          )
+        }}
       </Form.Item>
     </Form>
   )
