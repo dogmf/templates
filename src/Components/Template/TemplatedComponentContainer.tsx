@@ -1,4 +1,3 @@
-import { Card } from 'antd'
 import { DOMAttributes, FC } from 'react'
 
 type TemplatedComponentContainerProps = DOMAttributes<{}> & {}

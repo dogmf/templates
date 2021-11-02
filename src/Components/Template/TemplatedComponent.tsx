@@ -1,4 +1,3 @@
-import { Result, Space, Typography } from 'antd'
 import { ComponentType, DOMAttributes, FC, useMemo } from 'react'
 import { compile } from 'handlebars'
 import TemplatedComponentContainer from './TemplatedComponentContainer'
@@ -39,7 +38,7 @@ const TemplatedComponent: FC<TemplatedComponentProps> = (props) => {
         </div>
       )
     }
-  }, [templater, parsedData])
+  }, [templater, parsedData, container])
 
   return templatedData
 }

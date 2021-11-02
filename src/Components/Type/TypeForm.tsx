@@ -15,7 +15,12 @@ const TypeForm: FC<TypeFormProps> = (props) => {
       <Form.Item name="name" label="Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item name="defaults" label="Defaults" rules={[{ required: true }]}>
+      <Form.Item
+        name="defaults"
+        label="Defaults"
+        rules={[{ required: true }]}
+        initialValue={{}}
+      >
         <JSONInput />
       </Form.Item>
       <Form.Item
@@ -36,6 +41,7 @@ const TypeForm: FC<TypeFormProps> = (props) => {
                   validator: templateValidator
                 }
               ]}
+              initialValue=""
             >
               <TemplateInput width="600px" example={example} />
             </Form.Item>

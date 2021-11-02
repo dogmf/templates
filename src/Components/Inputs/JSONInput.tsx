@@ -16,8 +16,8 @@ const JSONInput: FC<DefaultInputProps<Object>> = (props) => {
   const applyHandler = useCallback(() => {
     let error = null
     try {
-      JSON.parse(localValue)
-      onChange?.(localValue)
+      let objValue = JSON.parse(localValue)
+      onChange?.(objValue)
       setModalIsOpen(false)
     } catch (err) {
       error = err as Error
@@ -27,7 +27,7 @@ const JSONInput: FC<DefaultInputProps<Object>> = (props) => {
   const cancelHandler = useCallback(() => {
     setModalIsOpen(false)
     setError(null)
-  }, [localValue, onChange])
+  }, [])
   return (
     <>
       <Button onClick={() => setModalIsOpen(true)}>Edit</Button>

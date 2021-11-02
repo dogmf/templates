@@ -1,24 +1,16 @@
 import { FC } from 'react'
 import { ObjectItem } from '../../Utils/db'
+import TemplatedComponent from '../Template/TemplatedComponent'
+import { useSingleTypeQuery } from '../Type/TypeQuery'
 
 type ObjectViewProps = {
   data: ObjectItem
 }
 
 const ObjectView: FC<ObjectViewProps> = (props) => {
-  let { data, ...otherProps } = props
-  return (
-    <div
-      {...otherProps}
-      style={{
-        padding: '2em',
-        backgroundColor: 'rgba(0,100,230,.1)',
-        borderRadius: '.3em'
-      }}
-    >
-      {JSON.stringify(data)}
-    </div>
-  )
+  let { data } = props
+  let { data: type } = useSingleTypeQuery(data.type)
+  return <TemplatedComponent template={type?.template} data={data} />
 }
 
 export default ObjectView

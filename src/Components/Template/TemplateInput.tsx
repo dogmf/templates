@@ -24,7 +24,7 @@ const TemplateInput: FC<TemplateInputProps> = (props) => {
   }, [localValue, onChange])
   const cancelHandler = useCallback(() => {
     setModalIsOpen(false)
-  }, [localValue])
+  }, [])
   return (
     <>
       <TemplatedComponent template={value} data={example} />

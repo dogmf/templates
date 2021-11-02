@@ -3,11 +3,11 @@ import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
 import TypeCardModal from '../Components/Type/TypeCardModal'
 import PageLayout from '../Layouts/PageLayout'
-import { MyAppDatabase, Type } from '../Utils/db'
+import { MyAppDatabase, TypeItem } from '../Utils/db'
 
 type TypesProps = {}
 
-const COLUMNS: TableColumnType<Type>[] = [
+const COLUMNS: TableColumnType<TypeItem>[] = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -22,7 +22,7 @@ const Types: FC<TypesProps> = (props) => {
     undefined
   )
 
-  const { data: types, isLoading: loading } = useQuery<Type[]>(
+  const { data: types, isLoading: loading } = useQuery<TypeItem[]>(
     ['types', tableState],
     async () => {
       let db = new MyAppDatabase()
