@@ -2,7 +2,7 @@ export const INITIAL_TYPES = [
   {
     name: 'dog',
     template:
-      "<div\r\n  style='\r\n    padding: 0.3em 1em;\r\n    display: flex;\r\n    gap: 1em;\r\n    max-height: 140px;\r\n    overflow: hidden;\r\n  '\r\n>\r\n  <div>\r\n    <img style='height: 80px' src='{{data.picture}}' />\r\n  </div>\r\n  <div>\r\n    <span class='ant-tag'>dog</span>\r\n    {{#each data.tags}}\r\n      <span class='ant-tag'>{{.}}</span>\r\n    {{/each}}\r\n    <div style='display:flex; align-items:baseline; gap: 1em'>\r\n      <h1 style='margin-bottom: 0'>\r\n        {{data.name}}\r\n      </h1>\r\n      <i>{{data.age}}</i>\r\n    </div>\r\n    <p>{{data.about}}</p>\r\n  </div>\r\n</div>",
+      "<div class='ant-card-body'>\r\n  <div style='display: flex;gap: 1em;max-height: 130px;overflow: hidden;'>\r\n    <div>\r\n      <img style='height: 80px' src='{{data.picture}}' />\r\n    </div>\r\n    <div>\r\n      <span class='ant-tag'>dog</span>\r\n      {{#each data.tags}}\r\n        <span class='ant-tag'>{{.}}</span>\r\n      {{/each}}\r\n      <div style='display:flex; align-items:baseline; gap: 1em'>\r\n        <h1 style='margin-bottom: 0'>\r\n          {{data.name}}\r\n        </h1>\r\n        <i>{{data.age}}</i>\r\n      </div>\r\n      <p>{{data.about}}</p>\r\n    </div>\r\n  </div>\r\n</div>",
     defaults: {
       type: 'dog',
       data: {
@@ -22,16 +22,14 @@ export const INITIAL_TYPES = [
     defaults: {
       label: 'Coleen Whitfield',
       data: {
-        avatar:
-          'https://avatars.dicebear.com/api/micah/618130330e2f00a5984b8be5.svg',
+        avatar: 'https://avatars.dicebear.com/api/micah/template-app-x.svg',
         name: 'Coleen Whitfield',
-        gender: 'male',
+        gender: 'female',
         email: 'coleenwhitfield@delphide.com'
       }
     },
     template:
-      "<li class='ant-list-item' style='padding:1em 2em'>\r\n  <div class='ant-list-item-meta'>\r\n    <div class='ant-list-item-meta-avatar'>\r\n      <span\r\n        class='ant-avatar ant-avatar-circle ant-avatar-image'\r\n        style='width:80px; height:80px'\r\n      ><img src='{{data.avatar}}' /></span>\r\n    </div>\r\n    <div>\r\n      <h4 class='ant-list-item-meta-title'>\r\n        {{data.name}}\r\n        {{#if (eq data.gender 'male')}}\r\n          ♂️\r\n        {{else}}\r\n          ♀️\r\n        {{/if}}\r\n      </h4>\r\n      <div class='ant-list-item-meta-description'>\r\n        {{data.email}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n</li>",
-    id: 2
+      "<li class='ant-card-body'>\r\n  <div class='ant-list-item-meta'>\r\n    <div class='ant-list-item-meta-avatar'>\r\n      <span\r\n        class='ant-avatar ant-avatar-circle ant-avatar-image'\r\n        style='width:80px; height:80px'\r\n      ><img src='{{data.avatar}}' /></span>\r\n    </div>\r\n    <div>\r\n      <h4 class='ant-list-item-meta-title'>\r\n        {{data.name}}\r\n        {{#if (eq data.gender 'male')}}\r\n          ♂️\r\n        {{else}}\r\n          ♀️\r\n        {{/if}}\r\n      </h4>\r\n      <div class='ant-list-item-meta-description'>\r\n        {{data.email}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n</li>"
   },
   {
     name: 'template',
@@ -40,7 +38,6 @@ export const INITIAL_TYPES = [
       "<div class='ant-card'>\r\n  <div class='ant-card-head'>\r\n    <div class='ant-card-head-wrapper'>\r\n      <div class='ant-card-head-title'>Card title</div>\r\n      <div class=\"ant-card-extra\"><span class=\"ant-tag ant-tag-green\">tag</span></div>\r\n    </div>\r\n  </div>\r\n  <div class='ant-card-body'>Card content</div>\r\n</div>"
   }
 ]
-
 export const INITIAL_OBJECTS = [
   // DOGS
 
@@ -139,6 +136,19 @@ export const INITIAL_OBJECTS = [
       about:
         'Commodo elit aute qui cupidatat occaecat mollit ea nostrud do ea veniam laborum. Sunt sunt sunt ullamco voluptate labore ut id voluptate incididunt consectetur pariatur. Laboris enim incididunt nulla deserunt. Irure ipsum aute anim ullamco ipsum ipsum quis. Labore adipisicing amet anim excepteur aliquip et non ipsum tempor tempor occaecat anim enim nostrud.\r\n',
       tags: ['amet']
+    }
+  },
+  {
+    label: 'ПЁС',
+    type: 'dog',
+    data: {
+      picture:
+        'https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/19/UP2477-CUSA06694_00-AV00000000000022/image?w=320&h=320&bg_color=000000&opacity=100&_version=00_09_000',
+      age: 16,
+      name: 'ПЁС',
+      gender: 'male',
+      about: 'нормальный пёс',
+      tags: ['хороший', 'плохой', 'злой']
     }
   },
 

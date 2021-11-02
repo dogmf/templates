@@ -27,8 +27,10 @@ const TemplateInput: FC<TemplateInputProps> = (props) => {
   }, [])
   return (
     <>
-      <TemplatedComponent template={value} data={example} />
-      <Button onClick={() => setModalIsOpen(true)}>Edit</Button>
+      <Space direction="vertical">
+        <TemplatedComponent template={value} data={example} />
+        <Button onClick={() => setModalIsOpen(true)}>Edit</Button>
+      </Space>
       <Modal
         title="Template Editor"
         visible={modalIsOpen}
